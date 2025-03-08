@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight + Hotel Booking</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .destination-img {
+            width: 100%;
+            height: 250px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures uniform appearance */
+            border-radius: 8px; /* Smooth corners */
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -84,12 +92,16 @@
         <h3>Discover our hottest destinations</h3>
         <div class="row">
             <div class="col-md-4 text-center">
-                <img src="https://res.cloudinary.com/lastminute-contenthub/image/upload/c_lfill,ar_10:6/c_limit,w_768,h_999999/q_auto:best/f_auto/v1/DAM/PPC/Countries/India/jaipur.jpg" class="img-fluid" alt="Jaipur, India">
-                <p>Jaipur, India - from ₹ 11,213</p>
+                <img src="https://res.cloudinary.com/lastminute-contenthub/image/upload/c_lfill,ar_10:6/c_limit,w_768,h_999999/q_auto:best/f_auto/v1/DAM/PPC/Countries/India/jaipur.jpg" class="destination-img" alt="Jaipur, India">
+                <p class="fw-semibold mt-2">Jaipur, India - from ₹ 11,213</p>
             </div>
             <div class="col-md-4 text-center">
-                <img src="https://res.cloudinary.com/lastminute-contenthub/image/upload/c_lfill,ar_10:6/c_limit,w_768,h_999999/q_auto:best/f_auto/v1/DAM/Photos/Destinations/Asia/India/Goa/eyeem-23764952-123550096.jpg" class="img-fluid" alt="Goa, India">
-                <p>Goa, India - from ₹ 12,271</p>
+                <img src="https://res.cloudinary.com/lastminute-contenthub/image/upload/c_lfill,ar_10:6/c_limit,w_768,h_999999/q_auto:best/f_auto/v1/DAM/Photos/Destinations/Asia/India/Goa/eyeem-23764952-123550096.jpg" class="destination-img" alt="Goa, India">
+                <p class="fw-semibold mt-2">Goa, India - from ₹ 12,271</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="https://servdharm.com/cdn/shop/articles/Wallpaper_900x.jpg?v=1694405183" class="destination-img" alt="Varanasi, India">
+                <p class="fw-semibold mt-2">Varanasi, India - from ₹ 14,123</p>
             </div>
         </div>
     </div>
