@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compare and Book Flights</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .flight-img {
+            width: 100%;
+            height: 250px; /* Set a fixed height */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -108,33 +116,22 @@
         <h3>Popular flights near you</h3>
         <p>Find deals on domestic and international flights</p>
         <div class="row">
-            <div class="col-md-4" style="margin-bottom: 20px;">
-                <img src="https://q-xx.bstatic.com/xdata/images/city/526x420/685289.webp?k=8ca416336a9db2f3754593dedd10ad2099adbfbf351b2c56fa4a0cfb8fc33a77&o=" class="img-fluid" alt="Chennai to Colombo">
+            <div class="col-md-4 mb-3">
+                <img src="https://q-xx.bstatic.com/xdata/images/city/526x420/685289.webp?k=8ca416336a9db2f3754593dedd10ad2099adbfbf351b2c56fa4a0cfb8fc33a77&o=" class="flight-img">
                 <p>Chennai to Colombo - 10 Mar - 17 Mar · Round trip</p>
             </div>
-            <div class="col-md-4">
-                <img src="https://q-xx.bstatic.com/xdata/images/city/526x420/619666.webp?k=e68cd0f0f986f206e34c7ea54851b18b3735e66f224f592fdaf918a70239c728&o=" class="img-fluid" alt="Chennai to Singapore">
+            <div class="col-md-4 mb-3">
+                <img src="https://q-xx.bstatic.com/xdata/images/city/526x420/619666.webp?k=e68cd0f0f986f206e34c7ea54851b18b3735e66f224f592fdaf918a70239c728&o=" class="flight-img">
                 <p>Chennai to Singapore - 11 Mar - 18 Mar · Round trip</p>
             </div>
-        </div>
-    </div>
-
-    <!-- Trending Cities Section -->
-    <div class="container mt-5">
-        <h3>Trending cities</h3>
-        <p>Book flights to a destination popular with travellers from India</p>
-        <div class="row">
-            <div class="col-md-4" style="margin-bottom: 20px;">
-                <img src="https://q-xx.bstatic.com/xdata/images/city/526x420/684764.webp?k=49cc399ccbdec7d3a1419b46e85b917d9b7ecf8940cdc826c5e41e1c8c23e356&o=" class="img-fluid" alt="New Delhi, India">
-                <p>New Delhi, India - Flights from Chennai International Airport - 8 Mar - 15 Mar · Round trip</p>
-            </div>
-            <div class="col-md-4">
-                <img src="https://q-xx.bstatic.com/xdata/images/city/526x420/977219.webp?k=5195e2536fa76cce99b3832db957dd594556791764839bb4ac3a64278c99ff4d&o=" class="img-fluid" alt="Dubai, UAE">
-                <p>Dubai, United Arab Emirates - Flights from Chennai International Airport - 8 Mar - 15 Mar · Round trip</p>
+            <div class="col-md-4 mb-3">
+                <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTy4WLHFiEljbLz93RHFL3_HipYI6KbZ8sfSO6p5CifhuynzR1q-luPdIdOFQLSeYI_rvziJW7LWWzM7o5J6HxrhHY6UAiZtYJU7DQ9FQ" class="flight-img">
+                <p>Chennai to Malaysia - 12 Mar - 19 Mar · Round trip</p>
             </div>
         </div>
     </div>
 
+    <!-- JavaScript for Passenger Counter -->
     <script>
         function changePassengerCount(type, change) {
             let countInput = document.getElementById(type);
@@ -144,7 +141,7 @@
             }
         }
     </script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
