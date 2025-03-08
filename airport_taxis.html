@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Taxis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="text-white text-center py-5" style="background-color: darkblue;">
+        <h1 class="fw-bold">Book your airport taxi</h1>
+        <p class="lead">Easy airport transfers to and from your accommodation</p>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="container mt-4">
+        <div class="bg-light p-4 rounded shadow-lg">
+            <form>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label fw-semibold">Journey Type</label>
+                        <div>
+                            <input type="radio" id="oneWay" name="journeyType" checked>
+                            <label for="oneWay">One-way</label>
+                            <input type="radio" id="return" name="journeyType">
+                            <label for="return">Return</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Pick-up Location</label>
+                        <input type="text" class="form-control" placeholder="Enter pick-up location">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Drop-off Location</label>
+                        <input type="text" class="form-control" placeholder="Enter drop-off location">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Pick-up Date & Time</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div class="col-md-6" id="returnDateTime" style="display: none;">
+                        <label class="form-label fw-semibold">Return Date & Time</label>
+                        <input type="datetime-local" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label fw-semibold">Passengers</label>
+                        <input type="number" class="form-control" value="2" min="1">
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-primary w-50 fw-bold">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reasons to Book -->
+    <div class="container mt-5">
+        <h3 class="text-center">Reasons to book airport taxis with us</h3>
+        
+        <div class="row text-center mt-3">
+            <div class="col-md-4">
+                <h4 class="fw-bold">Flight tracking</h4>
+                <p>Your driver tracks your flight and waits for you if it's delayed</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="fw-bold">One clear price</h4>
+                <p>Your price is confirmed upfront – no extra costs, no cash required</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="fw-bold">Tried and trusted</h4>
+                <p>We work with professional drivers and have 24/7 customer care</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("return").addEventListener("change", function() {
+            document.getElementById("returnDateTime").style.display = "block";
+        });
+        document.getElementById("oneWay").addEventListener("change", function() {
+            document.getElementById("returnDateTime").style.display = "none";
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

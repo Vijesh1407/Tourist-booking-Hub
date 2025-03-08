@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rentals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="text-white text-center py-5" style="background-color: darkblue;">
+        <h1 class="fw-bold">Car hire for any kind of trip</h1>
+        <p class="lead">Great cars at great prices, from the biggest car rental companies</p>
+    </div>
+
+    <!-- Car Rental Search Form -->
+    <div class="container mt-4">
+        <div class="bg-light p-4 rounded shadow-lg">
+            <form>
+                <div class="row g-3">
+                    <!-- Pick-up Location -->
+                    <div class="col-md-12">
+                        <label class="form-label fw-semibold">Pick-up location</label>
+                        <input type="text" class="form-control" placeholder="Enter city or airport">
+                    </div>
+
+                    <!-- Pick-up Date and Time -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Pick-up Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Time</label>
+                        <input type="time" class="form-control" value="10:00">
+                    </div>
+
+                    <!-- Drop-off Date and Time -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Drop-off Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Time</label>
+                        <input type="time" class="form-control" value="10:00">
+                    </div>
+
+                    <!-- Different Drop-off Location -->
+                    <div class="col-md-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="diffDropOff">
+                            <label class="form-check-label fw-semibold" for="diffDropOff">Drop car off at different location</label>
+                        </div>
+                    </div>
+
+                    <!-- Driver's Age Checkbox -->
+                    <div class="col-md-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="ageCheck" onclick="toggleDriverAge()">
+                            <label class="form-check-label fw-semibold" for="ageCheck">Driver aged between 30 - 65?</label>
+                        </div>
+                    </div>
+
+                    <!-- Driver's Age Input -->
+                    <div class="col-md-12">
+                        <label class="form-label fw-semibold">Driver's Age</label>
+                        <input type="number" class="form-control" id="driverAge" placeholder="Enter age" min="18" max="100">
+                    </div>
+
+                    <!-- Search Button -->
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-primary w-50 fw-bold">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Promotions Section -->
+    <div class="container mt-5 text-center">
+        <h3>Travel more, spend less</h3>
+        <p>Find the best deals on car rentals and make the most of your journey.</p>
+    </div>
+
+    <script>
+        function toggleDriverAge() {
+            let ageInput = document.getElementById("driverAge");
+            let ageCheck = document.getElementById("ageCheck");
+            if (ageCheck.checked) {
+                ageInput.disabled = true;
+                ageInput.value = "";
+            } else {
+                ageInput.disabled = false;
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
