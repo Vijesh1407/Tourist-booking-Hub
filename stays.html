@@ -8,6 +8,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-compass"></i> Tourist Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stays.html"><i class="bi bi-building"></i> Stays</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights.html"><i class="bi bi-airplane"></i> Flights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights_hotels.html"><i class="bi bi-luggage"></i> Flight + Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car_rentals.html"><i class="bi bi-car-front"></i> Car Rentals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="attractions.html"><i class="bi bi-map"></i> Attractions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="airport_taxis.html"><i class="bi bi-taxi-front"></i> Airport Taxis</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="signup.html"><i class="bi bi-person-plus"></i> Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Include Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
     <!-- Header Section -->
     <div class="text-white text-center py-5" style="background-color: darkblue;">
         <h1 class="fw-bold">Find your next stay</h1>
@@ -17,49 +45,55 @@
     <!-- Search Form -->
     <div class="container mt-4">
         <div class="bg-light p-4 rounded shadow-lg">
-            <form>
+            <form onsubmit="return validateForm()">
                 <div class="row g-3">
                     <!-- Destination Input -->
                     <div class="col-md-4">
-                        <label class="form-label fw-semibold">Where are you going?</label>
-                        <input type="text" class="form-control" placeholder="Enter destination">
+                        <label class="form-label fw-semibold">Where are you going? <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="destination" placeholder="Enter destination">
+                        <div id="destinationError" class="text-danger"></div>
                     </div>
-                    
+            
                     <!-- Check-in Date -->
                     <div class="col-md-2">
-                        <label class="form-label fw-semibold">Check-in date</label>
-                        <input type="date" class="form-control">
+                        <label class="form-label fw-semibold">Check-in date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="checkInDate">
+                        <div id="checkInError" class="text-danger"></div>
                     </div>
-                    
+            
                     <!-- Check-out Date -->
                     <div class="col-md-2">
-                        <label class="form-label fw-semibold">Check-out date</label>
-                        <input type="date" class="form-control">
+                        <label class="form-label fw-semibold">Check-out date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="checkOutDate">
+                        <div id="checkOutError" class="text-danger"></div>
                     </div>
-                    
+            
                     <!-- Guests & Rooms Selection -->
                     <div class="col-md-3">
-                        <label class="form-label fw-semibold">Guests & Rooms</label>
-                        <select class="form-select">
-                            <option selected>Adults</option>
-                            <option>Adults + Children</option>
-                            <option>Friends Package</option>
-                            <option>Family Package</option>
+                        <label class="form-label fw-semibold">Guests & Rooms <span class="text-danger">*</span></label>
+                        <select class="form-select" id="guests">
+                            <option value="">Select</option>
+                            <option value="Adults">Adults</option>
+                            <option value="Adults + Children">Adults + Children</option>
+                            <option value="Friends Package">Friends Package</option>
+                            <option value="Family Package">Family Package</option>
                         </select>
+                        <div id="guestsError" class="text-danger"></div>
                     </div>
-                    
+            
                     <!-- Search Button -->
                     <div class="col-md-1 align-self-end">
-                        <button class="btn btn-primary w-100 fw-bold">Search</button>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Search</button>
                     </div>
                 </div>
-                
+            
                 <!-- Flights Checkbox -->
                 <div class="form-check mt-3">
                     <input class="form-check-input" type="checkbox" id="flightsCheck">
                     <label class="form-check-label fw-semibold" for="flightsCheck">I'm looking for flights</label>
                 </div>
             </form>
+            
         </div>
     </div>
 
@@ -73,7 +107,56 @@
             <button class="btn btn-light fw-bold">Save 15% or more</button>
         </div>
     </div>
-
+    <script>
+        function validateForm() {
+            let isValid = true;
+            let today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+        
+            // Validate Destination
+            let destination = document.getElementById("destination").value.trim();
+            let destinationError = document.getElementById("destinationError");
+            destinationError.innerHTML = "";
+            if (destination.length < 3) {
+                destinationError.innerHTML = "Enter a valid destination.";
+                isValid = false;
+            }
+        
+            // Validate Check-in Date
+            let checkInDate = document.getElementById("checkInDate").value;
+            let checkInError = document.getElementById("checkInError");
+            checkInError.innerHTML = "";
+            if (!checkInDate) {
+                checkInError.innerHTML = "Check-in date is required.";
+                isValid = false;
+            } else if (checkInDate < today) {
+                checkInError.innerHTML = "Check-in date cannot be in the past.";
+                isValid = false;
+            }
+        
+            // Validate Check-out Date
+            let checkOutDate = document.getElementById("checkOutDate").value;
+            let checkOutError = document.getElementById("checkOutError");
+            checkOutError.innerHTML = "";
+            if (!checkOutDate) {
+                checkOutError.innerHTML = "Check-out date is required.";
+                isValid = false;
+            } else if (checkOutDate <= checkInDate) {
+                checkOutError.innerHTML = "Check-out must be after check-in.";
+                isValid = false;
+            }
+        
+            // Validate Guests & Rooms Selection
+            let guests = document.getElementById("guests").value;
+            let guestsError = document.getElementById("guestsError");
+            guestsError.innerHTML = "";
+            if (guests === "") {
+                guestsError.innerHTML = "Please select an option.";
+                isValid = false;
+            }
+        
+            return isValid;
+        }
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
