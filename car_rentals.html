@@ -9,6 +9,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-compass"></i> Tourist Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stays.html"><i class="bi bi-building"></i> Stays</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights.html"><i class="bi bi-airplane"></i> Flights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights_hotels.html"><i class="bi bi-luggage"></i> Flight + Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car_rentals.html"><i class="bi bi-car-front"></i> Car Rentals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="attractions.html"><i class="bi bi-map"></i> Attractions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="airport_taxis.html"><i class="bi bi-taxi-front"></i> Airport Taxis</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="signup.html"><i class="bi bi-person-plus"></i> Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Include Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
     <!-- Header Section -->
     <div class="text-white text-center py-5" style="background-color: darkblue;">
         <h1 class="fw-bold">Car hire for any kind of trip</h1>
@@ -18,34 +46,37 @@
     <!-- Car Rental Search Form -->
     <div class="container mt-4">
         <div class="bg-light p-4 rounded shadow-lg">
-            <form>
+            <form onsubmit="return validateCarRentalForm()">
                 <div class="row g-3">
                     <!-- Pick-up Location -->
                     <div class="col-md-12">
-                        <label class="form-label fw-semibold">Pick-up location</label>
-                        <input type="text" class="form-control" placeholder="Enter city or airport">
+                        <label class="form-label fw-semibold">Pick-up location <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="pickupLocation" placeholder="Enter city or airport">
+                        <small class="text-danger" id="pickupError"></small>
                     </div>
-
+            
                     <!-- Pick-up Date and Time -->
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Pick-up Date</label>
-                        <input type="date" class="form-control">
+                        <label class="form-label fw-semibold">Pick-up Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="pickupDate">
+                        <small class="text-danger" id="pickupDateError"></small>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Time</label>
-                        <input type="time" class="form-control" value="10:00">
+                        <label class="form-label fw-semibold">Pick-up Time</label>
+                        <input type="time" class="form-control" id="pickupTime" value="10:00">
                     </div>
-
+            
                     <!-- Drop-off Date and Time -->
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Drop-off Date</label>
-                        <input type="date" class="form-control">
+                        <label class="form-label fw-semibold">Drop-off Date <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="dropoffDate">
+                        <small class="text-danger" id="dropoffDateError"></small>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Time</label>
-                        <input type="time" class="form-control" value="10:00">
+                        <label class="form-label fw-semibold">Drop-off Time</label>
+                        <input type="time" class="form-control" id="dropoffTime" value="10:00">
                     </div>
-
+            
                     <!-- Different Drop-off Location -->
                     <div class="col-md-12">
                         <div class="form-check">
@@ -53,7 +84,7 @@
                             <label class="form-check-label fw-semibold" for="diffDropOff">Drop car off at different location</label>
                         </div>
                     </div>
-
+            
                     <!-- Driver's Age Checkbox -->
                     <div class="col-md-12">
                         <div class="form-check">
@@ -61,19 +92,21 @@
                             <label class="form-check-label fw-semibold" for="ageCheck">Driver aged between 30 - 65?</label>
                         </div>
                     </div>
-
+            
                     <!-- Driver's Age Input -->
                     <div class="col-md-12">
-                        <label class="form-label fw-semibold">Driver's Age</label>
+                        <label class="form-label fw-semibold">Driver's Age <span class="text-danger">*</span></label>
                         <input type="number" class="form-control" id="driverAge" placeholder="Enter age" min="18" max="100">
+                        <small class="text-danger" id="ageError"></small>
                     </div>
-
+            
                     <!-- Search Button -->
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-primary w-50 fw-bold">Find car</button>
+                        <button class="btn btn-primary w-50 fw-bold" type="submit">Find car</button>
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
 
@@ -113,19 +146,76 @@
     </div>
 
     <script>
-        function toggleDriverAge() {
-            let ageInput = document.getElementById("driverAge");
-            let ageCheck = document.getElementById("ageCheck");
-            if (ageCheck.checked) {
-                ageInput.disabled = true;
-                ageInput.value = "";
-            } else {
-                ageInput.disabled = false;
-            }
+        function validateCarRentalForm() {
+    let isValid = true;
+    let today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+
+    // Validate Pick-up Location
+    let pickupLocation = document.getElementById("pickupLocation").value.trim();
+    let pickupError = document.getElementById("pickupError");
+    pickupError.innerHTML = "";
+    if (pickupLocation.length < 3) {
+        pickupError.innerHTML = "Enter a valid pick-up location.";
+        isValid = false;
+    }
+
+    // Validate Pick-up Date
+    let pickupDate = document.getElementById("pickupDate").value;
+    let pickupDateError = document.getElementById("pickupDateError");
+    pickupDateError.innerHTML = "";
+    if (!pickupDate) {
+        pickupDateError.innerHTML = "Pick-up date is required.";
+        isValid = false;
+    } else if (pickupDate < today) {
+        pickupDateError.innerHTML = "Pick-up date cannot be in the past.";
+        isValid = false;
+    }
+
+    // Validate Drop-off Date
+    let dropoffDate = document.getElementById("dropoffDate").value;
+    let dropoffDateError = document.getElementById("dropoffDateError");
+    dropoffDateError.innerHTML = "";
+    if (!dropoffDate) {
+        dropoffDateError.innerHTML = "Drop-off date is required.";
+        isValid = false;
+    } else if (dropoffDate <= pickupDate) {
+        dropoffDateError.innerHTML = "Drop-off date must be after the pick-up date.";
+        isValid = false;
+    }
+
+    // Validate Driver's Age if Checkbox is Unchecked
+    let ageCheck = document.getElementById("ageCheck").checked;
+    let driverAge = document.getElementById("driverAge").value;
+    let ageError = document.getElementById("ageError");
+    ageError.innerHTML = "";
+
+    if (!ageCheck) {
+        if (!driverAge) {
+            ageError.innerHTML = "Driver's age is required.";
+            isValid = false;
+        } else if (driverAge < 18 || driverAge > 100) {
+            ageError.innerHTML = "Enter a valid age (18-100).";
+            isValid = false;
         }
+    }
+
+    return isValid;
+}
+
+// Enable/Disable Driver's Age Input
+function toggleDriverAge() {
+    let ageInput = document.getElementById("driverAge");
+    let ageCheck = document.getElementById("ageCheck").checked;
+    
+    if (ageCheck) {
+        ageInput.disabled = true;
+        ageInput.value = ""; // Clear age input when disabled
+    } else {
+        ageInput.disabled = false;
+    }
+}
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
