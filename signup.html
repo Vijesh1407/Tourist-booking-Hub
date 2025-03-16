@@ -8,12 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-          background-image: url('https://images7.alphacoders.com/536/536269.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
+            background-image: url('https://images7.alphacoders.com/536/536269.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
-        </style>
+        .required {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -22,18 +25,35 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <h3 class="text-center mb-4">Sign Up</h3>
-                        <form>
+                        <form onsubmit="return validateForm()">
                             <div class="mb-3">
-                                <label for="fullname" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="fullname" placeholder="Enter full name">
+                                <label for="firstname" class="form-label">First Name <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
+                                <div id="firstnameError" class="text-danger mt-1"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="middlename" class="form-label">Middle Name (Optional)</label>
+                                <input type="text" class="form-control" id="middlename" placeholder="Enter middle name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastname" class="form-label">Last Name <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
+                                <div id="lastnameError" class="text-danger mt-1"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email <span class="required">*</span></label>
                                 <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                <div id="emailError" class="text-danger mt-1"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label">Password <span class="required">*</span></label>
                                 <input type="password" class="form-control" id="password" placeholder="Create a password">
+                                <div id="passwordError" class="text-danger mt-1"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password <span class="required">*</span></label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password">
+                                <div id="confirmPasswordError" class="text-danger mt-1"></div>
                             </div>
                             <button type="submit" class="btn btn-success w-100">Sign Up</button>
                         </form>
@@ -43,5 +63,76 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function validateForm() {
+            let firstname = document.getElementById("firstname").value.trim();
+            let lastname = document.getElementById("lastname").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let confirmPassword = document.getElementById("confirmPassword").value.trim();
+            
+            let firstnameError = document.getElementById("firstnameError");
+            let lastnameError = document.getElementById("lastnameError");
+            let emailError = document.getElementById("emailError");
+            let passwordError = document.getElementById("passwordError");
+            let confirmPasswordError = document.getElementById("confirmPasswordError");
+
+            // Clear previous error messages
+            firstnameError.innerHTML = "";
+            lastnameError.innerHTML = "";
+            emailError.innerHTML = "";
+            passwordError.innerHTML = "";
+            confirmPasswordError.innerHTML = "";
+
+            let isValid = true;
+
+            // **Check required fields**
+            if (firstname === "") {
+                firstnameError.innerHTML = "First name is required!";
+                isValid = false;
+            }
+            if (lastname === "") {
+                lastnameError.innerHTML = "Last name is required!";
+                isValid = false;
+            }
+            if (email === "") {
+                emailError.innerHTML = "Email is required!";
+                isValid = false;
+            }
+            if (password === "") {
+                passwordError.innerHTML = "Password is required!";
+                isValid = false;
+            }
+            if (confirmPassword === "") {
+                confirmPasswordError.innerHTML = "Confirm password is required!";
+                isValid = false;
+            }
+
+            // **Email Validation**
+            let emailRegex = /^[A-Za-z][A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,3}$/;
+            if (!emailRegex.test(email) && email !== "") {
+                emailError.innerHTML = "Invalid email. It must not start with a number and must have 2-3 letters after the dot.";
+                isValid = false;
+            }
+
+            // **Password Validation**
+            let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password) && password !== "") {
+                passwordError.innerHTML = "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character.";
+                isValid = false;
+            }
+
+            // **Confirm Password Validation**
+            if (password !== confirmPassword && confirmPassword !== "") {
+                confirmPasswordError.innerHTML = "Passwords do not match!";
+                isValid = false;
+            }
+
+            return isValid; // Prevents form submission if false
+        }
+    </script>
+
 </body>
 </html>
+
