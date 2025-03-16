@@ -9,6 +9,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-compass"></i> Tourist Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stays.html"><i class="bi bi-building"></i> Stays</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights.html"><i class="bi bi-airplane"></i> Flights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights_hotels.html"><i class="bi bi-luggage"></i> Flight + Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car_rentals.html"><i class="bi bi-car-front"></i> Car Rentals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="attractions.html"><i class="bi bi-map"></i> Attractions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="airport_taxis.html"><i class="bi bi-taxi-front"></i> Airport Taxis</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="signup.html"><i class="bi bi-person-plus"></i> Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Include Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
     <!-- Header Section -->
     <div class="text-white text-center py-5" style="background-color: #003580;">
         <h1 class="fw-bold">Book your airport taxi</h1>
@@ -18,42 +46,48 @@
     <!-- Booking Form -->
     <div class="container mt-4">
         <div class="bg-light p-4 rounded shadow-lg">
-            <form>
+            <form onsubmit="return validateForm()">
                 <div class="row g-3">
                     <div class="col-md-12">
-                        <label class="form-label fw-semibold">Journey Type</label>
+                        <label class="form-label fw-semibold">Journey Type <span class="text-danger">*</span></label>
                         <div>
-                            <input type="radio" id="oneWay" name="journeyType" checked>
+                            <input type="radio" id="oneWay" name="journeyType" checked onclick="toggleReturnDate(false)">
                             <label for="oneWay">One-way</label>
-                            <input type="radio" id="return" name="journeyType">
+                            <input type="radio" id="return" name="journeyType" onclick="toggleReturnDate(true)">
                             <label for="return">Return</label>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Pick-up Location</label>
-                        <input type="text" class="form-control" placeholder="Enter pick-up location">
+                        <label class="form-label fw-semibold">Pick-up Location <span class="text-danger">*</span></label>
+                        <input type="text" id="pickupLocation" class="form-control" placeholder="Enter pick-up location">
+                        <div id="pickupLocationError" class="text-danger"></div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Drop-off Location</label>
-                        <input type="text" class="form-control" placeholder="Enter drop-off location">
+                        <label class="form-label fw-semibold">Drop-off Location <span class="text-danger">*</span></label>
+                        <input type="text" id="dropoffLocation" class="form-control" placeholder="Enter drop-off location">
+                        <div id="dropoffLocationError" class="text-danger"></div>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-semibold">Pick-up Date & Time</label>
-                        <input type="datetime-local" class="form-control">
+                        <label class="form-label fw-semibold">Pick-up Date & Time <span class="text-danger">*</span></label>
+                        <input type="datetime-local" id="pickupDateTime" class="form-control">
+                        <div id="pickupDateTimeError" class="text-danger"></div>
                     </div>
                     <div class="col-md-6" id="returnDateTime" style="display: none;">
-                        <label class="form-label fw-semibold">Return Date & Time</label>
-                        <input type="datetime-local" class="form-control">
+                        <label class="form-label fw-semibold">Return Date & Time <span class="text-danger">*</span></label>
+                        <input type="datetime-local" id="returnDateTimeInput" class="form-control">
+                        <div id="returnDateTimeError" class="text-danger"></div>
                     </div>
                     <div class="col-md-12">
-                        <label class="form-label fw-semibold">Passengers</label>
-                        <input type="number" class="form-control" value="2" min="1">
+                        <label class="form-label fw-semibold">Passengers <span class="text-danger">*</span></label>
+                        <input type="number" id="passengers" class="form-control" value="2" min="1">
+                        <div id="passengersError" class="text-danger"></div>
                     </div>
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-primary w-50 fw-bold">Search</button>
+                        <button type="submit" class="btn btn-primary w-50 fw-bold">Search</button>
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
 
@@ -92,14 +126,70 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
-        document.getElementById("return").addEventListener("change", function() {
-            document.getElementById("returnDateTime").style.display = "block";
-        });
-        document.getElementById("oneWay").addEventListener("change", function() {
-            document.getElementById("returnDateTime").style.display = "none";
-        });
+        function toggleReturnDate(show) {
+            document.getElementById('returnDateTime').style.display = show ? 'block' : 'none';
+        }
+    
+        function validateForm() {
+            let isValid = true;
+            let today = new Date().toISOString().slice(0, 16);
+    
+            // Pick-up Location Validation
+            let pickupLocation = document.getElementById("pickupLocation").value.trim();
+            let pickupLocationError = document.getElementById("pickupLocationError");
+            pickupLocationError.innerHTML = "";
+            if (pickupLocation.length < 3) {
+                pickupLocationError.innerHTML = "Enter a valid pick-up location.";
+                isValid = false;
+            }
+    
+            // Drop-off Location Validation
+            let dropoffLocation = document.getElementById("dropoffLocation").value.trim();
+            let dropoffLocationError = document.getElementById("dropoffLocationError");
+            dropoffLocationError.innerHTML = "";
+            if (dropoffLocation.length < 3) {
+                dropoffLocationError.innerHTML = "Enter a valid drop-off location.";
+                isValid = false;
+            }
+    
+            // Pick-up Date & Time Validation
+            let pickupDateTime = document.getElementById("pickupDateTime").value;
+            let pickupDateTimeError = document.getElementById("pickupDateTimeError");
+            pickupDateTimeError.innerHTML = "";
+            if (!pickupDateTime) {
+                pickupDateTimeError.innerHTML = "Pick-up date & time is required.";
+                isValid = false;
+            } else if (pickupDateTime < today) {
+                pickupDateTimeError.innerHTML = "Pick-up date & time cannot be in the past.";
+                isValid = false;
+            }
+    
+            // Return Date & Time Validation (Only if return journey is selected)
+            let returnDateTimeInput = document.getElementById("returnDateTimeInput").value;
+            let returnDateTimeError = document.getElementById("returnDateTimeError");
+            returnDateTimeError.innerHTML = "";
+            if (document.getElementById("return").checked) {
+                if (!returnDateTimeInput) {
+                    returnDateTimeError.innerHTML = "Return date & time is required.";
+                    isValid = false;
+                } else if (returnDateTimeInput <= pickupDateTime) {
+                    returnDateTimeError.innerHTML = "Return date & time must be after pick-up date & time.";
+                    isValid = false;
+                }
+            }
+    
+            // Passengers Validation
+            let passengers = document.getElementById("passengers").value;
+            let passengersError = document.getElementById("passengersError");
+            passengersError.innerHTML = "";
+            if (passengers < 1) {
+                passengersError.innerHTML = "At least one passenger is required.";
+                isValid = false;
+            }
+    
+            return isValid;
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
