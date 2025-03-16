@@ -8,12 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-          background-image: url('https://res.cloudinary.com/lastminute-contenthub/image/upload/c_lfill,ar_10:6/c_limit,w_768,h_999999/q_auto:best/f_auto/v1/DAM/Photos/Destinations/Asia/India/Goa/eyeem-23764952-123550096.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
+            background-image: url('https://res.cloudinary.com/lastminute-contenthub/image/upload/c_lfill,ar_10:6/c_limit,w_768,h_999999/q_auto:best/f_auto/v1/DAM/Photos/Destinations/Asia/India/Goa/eyeem-23764952-123550096.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
-        </style>
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -22,14 +26,16 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <h3 class="text-center mb-4">Login</h3>
-                        <form>
+                        <form onsubmit="return validateLogin()">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
+                                <label for="username" class="form-label">Username <span style="color: red;">*</span></label>
                                 <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                <div id="usernameError" class="error-message"></div>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
+                                <label for="password" class="form-label">Password <span style="color: red;">*</span></label>
                                 <input type="password" class="form-control" id="password" placeholder="Enter password">
+                                <div id="passwordError" class="error-message"></div>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Login</button>
                         </form>
@@ -43,6 +49,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function validateLogin() {
+            // Get input values
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            // Get error message elements
+            let usernameError = document.getElementById("usernameError");
+            let passwordError = document.getElementById("passwordError");
+
+            // Clear previous error messages
+            usernameError.innerHTML = "";
+            passwordError.innerHTML = "";
+
+            // Validation flag
+            let isValid = true;
+
+            // Username validation (Required)
+            if (username === "") {
+                usernameError.innerHTML = "Username is required!";
+                isValid = false;
+            }
+
+            // Password validation (Required + Strong Password Check)
+            let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (password === "") {
+                passwordError.innerHTML = "Password is required!";
+                isValid = false;
+            } else if (!passwordRegex.test(password)) {
+                passwordError.innerHTML = "Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character.";
+                isValid = false;
+            }
+
+            // Return validation result
+            return isValid;
+        }
+    </script>
 </body>
 </html>
 
