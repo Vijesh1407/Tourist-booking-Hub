@@ -43,6 +43,22 @@
             position: relative;
             z-index: 10; /* Ensures it stays above other elements */
         }
+        .additional-info {
+        background-color: darkblue;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .additional-info:hover {
+        background-color: navy; /* Darker shade on hover */
+    }
+
+    .additional-info .col-md-4 {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .additional-info .col-md-4:hover {
+        transform: scale(1.05); /* Slightly enlarges the column on hover */
+    }
     </style>
 </head>
 <body>
@@ -148,25 +164,25 @@
         </div>
     </div>
 
-    <!-- Additional Information -->
-    <div class="text-white text-center py-5" style="background-color: darkblue;">
-        <h3 class="text-center fw-bold">Your Account, Your Travel</h3>
-        <p class="text-center">All your trip details in one place</p>
-        <div class="row text-center mt-4">
-            <div class="col-md-4">
-                <h3 class="fw-bold">We've Got You Covered</h3>
-                <p>Explore top attractions, tours, and activities with ease</p>
-            </div>
-            <div class="col-md-4">
-                <h3 class="fw-bold">Fast and Flexible</h3>
-                <p>Book tickets online in minutes, with free cancellation on many attractions</p>
-            </div>
-            <div class="col-md-4">
-                <h3 class="fw-bold">Support When You Need It</h3>
-                <p>Booking.com's global Customer Service team is here to help 24/7</p>
-            </div>
+   <!-- Additional Information -->
+<div class="additional-info text-white text-center py-5">
+    <h3 class="text-center fw-bold">Your Account, Your Travel</h3>
+    <p class="text-center">All your trip details in one place</p>
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <h3 class="fw-bold">We've Got You Covered</h3>
+            <p>Explore top attractions, tours, and activities with ease</p>
+        </div>
+        <div class="col-md-4">
+            <h3 class="fw-bold">Fast and Flexible</h3>
+            <p>Book tickets online in minutes, with free cancellation on many attractions</p>
+        </div>
+        <div class="col-md-4">
+            <h3 class="fw-bold">Support When You Need It</h3>
+            <p>Booking.com's global Customer Service team is here to help 24/7</p>
         </div>
     </div>
+</div>
 
     <script>
         function validateForm() {
