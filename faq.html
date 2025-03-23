@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Tourist Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-compass"></i> Tourist Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stays.html"><i class="bi bi-building"></i> Stays</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights.html"><i class="bi bi-airplane"></i> Flights</a></li>
+                    <li class="nav-item"><a class="nav-link" href="flights_hotels.html"><i class="bi bi-luggage"></i> Flight + Hotels</a></li>
+                    <li class="nav-item"><a class="nav-link" href="car_rentals.html"><i class="bi bi-car-front"></i> Car Rentals</a></li>
+                    <li class="nav-item"><a class="nav-link" href="attractions.html"><i class="bi bi-map"></i> Attractions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="airport_taxis.html"><i class="bi bi-taxi-front"></i> Airport Taxis</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="signup.html"><i class="bi bi-person-plus"></i> Sign Up</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Include Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <h2 class="text-center text-primary">Frequently Asked Questions</h2>
+            <div class="accordion mt-3" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            How do I book a trip?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show">
+                        <div class="accordion-body">You can book a trip by selecting your destination, choosing your dates, and completing the payment process.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Can I cancel my booking?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse">
+                        <div class="accordion-body">Yes, you can cancel your booking based on our cancellation policy.</div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="index.html" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-primary text-white text-center py-3 mt-5">
+        <p>© 2025 Tourist Booking. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
