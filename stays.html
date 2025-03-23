@@ -98,15 +98,38 @@
     </div>
 
     <!-- Offers Section -->
-    <div class="container mt-5">
-        <h2 class="fw-bold">Offers</h2>
-        <p class="text-muted">Promotions, deals and special offers for you</p>
-        <div class="bg-primary text-white p-5 rounded shadow-lg">
-            <h4 class="fw-bold">Save on stays worldwide</h4>
-            <p class="lead">Start your year with a sense of adventure, saving 15% or more with Early 2025 Deals.</p>
-            <button class="btn btn-light fw-bold">Save 15% or more</button>
-        </div>
+<div class="container mt-5">
+    <h2 class="fw-bold">Offers</h2>
+    <p class="text-muted">Promotions, deals, and special offers for you</p>
+    <div class="offer-box bg-primary text-white p-5 rounded shadow-lg text-center">
+        <h4 class="fw-bold">Save on stays worldwide</h4>
+        <p class="lead">Start your year with a sense of adventure, saving 15% or more with Early 2025 Deals.</p>
+        <button class="btn btn-light fw-bold offer-btn">Save 15% or more</button>
     </div>
+</div>
+
+<!-- Add CSS for Hover Effect -->
+<style>
+    .offer-box {
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .offer-box:hover {
+        transform: scale(1.05); /* Slightly enlarges the section */
+        background-color: #0056b3; /* Changes to a lighter blue */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+    }
+
+    .offer-btn {
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .offer-btn:hover {
+        background-color: #a5ced5; /* Changes button color on hover */
+        color: #003580; /* Text color changes for contrast */
+    }
+</style>
+
     <script>
         function validateForm() {
             let isValid = true;
