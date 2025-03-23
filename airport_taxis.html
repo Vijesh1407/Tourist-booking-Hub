@@ -92,39 +92,65 @@
     </div>
 
     <!-- Why Book With Us? -->
-    <div class="container mt-4">
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card text-center shadow-lg border-0" style="background-color: #003580; color: white;">
-                    <div class="card-body">
-                        <i class="bi bi-airplane-engines" style="font-size: 2rem; color: white;"></i>
-                        <h5 class="card-title mt-2 fw-bold">Flight tracking</h5>
-                        <p class="card-text">Your driver tracks your flight and waits for you if it's delayed.</p>
-                    </div>
+<div class="container mt-4">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card text-center shadow-lg border-0 card-hover">
+                <div class="card-body">
+                    <i class="bi bi-airplane-engines"></i>
+                    <h5 class="card-title mt-2 fw-bold">Flight tracking</h5>
+                    <p class="card-text">Your driver tracks your flight and waits for you if it's delayed.</p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="card text-center shadow-lg border-0" style="background-color: #003580; color: white;">
-                    <div class="card-body">
-                        <i class="bi bi-cash-coin" style="font-size: 2rem; color: white;"></i>
-                        <h5 class="card-title mt-2 fw-bold">One clear price</h5>
-                        <p class="card-text">Your price is confirmed upfront - no extra costs, no cash required.</p>
-                    </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-lg border-0 card-hover">
+                <div class="card-body">
+                    <i class="bi bi-cash-coin"></i>
+                    <h5 class="card-title mt-2 fw-bold">One clear price</h5>
+                    <p class="card-text">Your price is confirmed upfront - no extra costs, no cash required.</p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="card text-center shadow-lg border-0" style="background-color: #003580; color: white;">
-                    <div class="card-body">
-                        <i class="bi bi-person-check" style="font-size: 2rem; color: white;"></i>
-                        <h5 class="card-title mt-2 fw-bold">Tried and trusted</h5>
-                        <p class="card-text">We work with professional drivers and have 24/7 customer care.</p>
-                    </div>
+        <div class="col-md-4">
+            <div class="card text-center shadow-lg border-0 card-hover">
+                <div class="card-body">
+                    <i class="bi bi-person-check"></i>
+                    <h5 class="card-title mt-2 fw-bold">Tried and trusted</h5>
+                    <p class="card-text">We work with professional drivers and have 24/7 customer care.</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Add CSS for Hover Effect -->
+<style>
+    .card-hover {
+        background-color: #003580;
+        color: white;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    .card-hover:hover {
+        transform: scale(1.05); /* Slightly enlarges the card */
+        background-color: #0056b3; /* Changes to a lighter blue */
+    }
+
+    .card-hover i {
+        font-size: 2rem;
+        color: white;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card-hover:hover i {
+        transform: rotate(10deg); /* Adds slight rotation effect */
+    }
+</style>
+
+
 
     <script>
         function toggleReturnDate(show) {
